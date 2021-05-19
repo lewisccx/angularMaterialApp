@@ -1,0 +1,46 @@
+<div class="container">
+
+
+  <mat-toolbar class="drawer-toolbar" color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="toolbar-spacer"></span>
+ 
+     <mat-label  class="mat-h3">Drawer Config</mat-label>
+    <mat-form-field class="toolbar-option">
+      <!-- <mat-label>Sidenav mode</mat-label> -->
+      <mat-select #mode [(value)]="selectedNavMode">
+        <mat-option *ngFor="let option of sideNavMode; let i= index" [value] = "option.value">{{option.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="toolbar-option">
+      <!-- <mat-label>Has backdrop</mat-label> -->
+      <mat-select #hasBackdrop [(value)]="selectedBackDrop">
+        <mat-option *ngFor="let option of backDropOptions; let i= index" [value] = "option.value">{{option.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+
+<mat-drawer-container class="drawer-container" [hasBackdrop]="hasBackdrop.value">
+  <mat-drawer class="side-drawer" #drawer [mode]="mode.value">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+  
+      <a mat-list-item routerLink="{{nav.url}}" *ngFor="let nav of fillerNav">{{nav.name}}</a>
+    </mat-nav-list>
+
+  </mat-drawer>
+  <mat-drawer-content class="drawer-content"> 
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+</div>

@@ -1,0 +1,39 @@
+
+<div class="container">
+<mat-form-field class="form-field" appearance="fill">
+    <mat-label>Num of Notification</mat-label>
+    <input  [(ngModel)]="numOfNoti" type="number" matInput min=0 max=99>
+  </mat-form-field>
+  <mat-form-field class="form-field" appearance="fill">
+    <mat-label>badge Message</mat-label>
+    <input [(ngModel)] = "badgeMessage" type="text" matInput >
+  </mat-form-field>
+  <mat-form-field class ="form-field" appearance="fill">
+    <mat-label>Icon</mat-label>
+    <mat-select (selectionChange)="onBadgePositionChanged($event.value)" >
+      <mat-option *ngFor="let option of badgePositions; let i= index" [value] = "i">
+        {{option.value}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="badge-container" >
+
+    <p>
+        <span class= "badge" [matBadge]="numOfNoti" matBadgeOverlap="true" >{{badgeMessage}}</span>
+      </p>
+      <p>
+        {{badgeMessage}}
+        <button mat-raised-button [matBadge]="numOfNoti" [matBadgeHidden]="hidden"   [matBadgePosition]="selectedPos" (click)="toggleBadgeVisibility()">
+            Hide
+        </button>
+    </p>
+      <p>
+        {{badgeMessage}}
+        <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+          <!-- Include text description of the icon's meaning for screen-readers -->
+          <span class="cdk-visually-hidden">
+
+          </span>
+      </p>
+    </div>

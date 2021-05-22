@@ -21,8 +21,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatBadgeModule} from '@angular/material/badge'
 import {MatCheckboxModule} from '@angular/material/checkbox'
-import { MarkdownModule  } from 'ngx-markdown';
+import { MarkdownModule, MarkedRenderer ,MarkedOptions } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [

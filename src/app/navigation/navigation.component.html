@@ -40,7 +40,8 @@
   </mat-drawer>
   <mat-drawer-content class="drawer-content"> 
     <router-outlet></router-outlet>
-    <markdown [src]="'./../../README.md'" (load)="onLoad()"></markdown>
+    <div markdown src="https://raw.githubusercontent.com/lewisccx/angularMaterialApp/main/README.md" (load)="onLoad()" ></div>
+
   </mat-drawer-content>
 
 </mat-drawer-container>

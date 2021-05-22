@@ -2,35 +2,52 @@
 <div class="container">
 <mat-form-field class="form-field" appearance="fill">
     <mat-label>Num of Notification</mat-label>
-    <input  [(ngModel)]="numOfNoti" type="number" matInput min=0 max=99>
+    <input  [(ngModel)]="numOfNotification" type="number" matInput min=0 max=99>
   </mat-form-field>
   <mat-form-field class="form-field" appearance="fill">
     <mat-label>badge Message</mat-label>
     <input [(ngModel)] = "badgeMessage" type="text" matInput >
   </mat-form-field>
-  <mat-form-field class ="form-field" appearance="fill">
-    <mat-label>Icon</mat-label>
-    <mat-select (selectionChange)="onBadgePositionChanged($event.value)" >
+  <mat-form-field  class ="form-field" appearance="fill">
+    <mat-label>Badge Position</mat-label>
+    <mat-select #mySelectedPos [(value)]="selectedPos" (selectionChange)="onBadgePositionChanged($event.value)" >
       <mat-option *ngFor="let option of badgePositions; let i= index" [value] = "i">
         {{option.value}}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <mat-form-field  class ="form-field" appearance="fill" >
+    <mat-label>Badge Color</mat-label>
+    <mat-select #mySelectedColor [(value)]="selectedColor" (selectionChange)="onBadgeColorChanged($event.value)">
+      <mat-option *ngFor="let option of badgeColors; let i= index" [value] = "i">
+        {{option.value}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field  class ="form-field" appearance="fill" >
+    <mat-label>Badge Size</mat-label>
+    <mat-select #mySelectedSize [(value)]="selectedSize" (selectionChange)="onBadgeSizeChanged($event.value)">
+      <mat-option *ngFor="let option of badgeSizes; let i= index" [value] = "i">
+        {{option.value}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox [(ngModel)]="hasOverlap" class ="form-field" (change)="onOverlapChanged($event.checked)"> Badge Overlap? </mat-checkbox>
 </div>
 
 <div class="badge-container" >
 
     <p>
-        <span class= "badge" [matBadge]="numOfNoti" matBadgeOverlap="true" >{{badgeMessage}}</span>
+        <span class= "badge" [matBadge]="numOfNotification" [matBadgeSize]="mySelectedSize.value" [matBadgeOverlap]="hasOverlap" [matBadgeColor] ="mySelectedColor.value" [matBadgePosition]="mySelectedPos.value">{{badgeMessage}}</span>
       </p>
       <p>
         {{badgeMessage}}
-        <button mat-raised-button [matBadge]="numOfNoti" [matBadgeHidden]="hidden"   [matBadgePosition]="selectedPos" (click)="toggleBadgeVisibility()">
+        <button mat-raised-button [matBadge]="numOfNotification"[matBadgeSize]="mySelectedSize.value" [matBadgeOverlap]="hasOverlap" [matBadgeHidden]="hidden" [matBadgeColor]="mySelectedColor.value"   [matBadgePosition]="mySelectedPos.value" (click)="toggleBadgeVisibility()">
             Hide
         </button>
     </p>
       <p>
         {{badgeMessage}}
-        <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+        <mat-icon [matBadge]="numOfNotification" [matBadgeSize]="mySelectedSize.value" [matBadgeOverlap]="hasOverlap" [matBadgePosition]="mySelectedPos.value" [matBadgeColor]="mySelectedColor.value">home</mat-icon>
           <!-- Include text description of the icon's meaning for screen-readers -->
           <span class="cdk-visually-hidden">
 

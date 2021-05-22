@@ -20,6 +20,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatBadgeModule} from '@angular/material/badge'
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import { MarkdownModule  } from 'ngx-markdown';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,11 @@ import {MatBadgeModule} from '@angular/material/badge'
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule,
+    MarkdownModule.forRoot(),
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
   ],
   providers: [],
   bootstrap: [AppComponent]

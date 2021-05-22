@@ -40,6 +40,7 @@
   </mat-drawer>
   <mat-drawer-content class="drawer-content"> 
     <router-outlet></router-outlet>
+    <markdown [src]="'./../../README.md'" (load)="onLoad()"></markdown>
   </mat-drawer-content>
 
 </mat-drawer-container>

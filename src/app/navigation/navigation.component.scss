@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -33,4 +37,10 @@
 .mat-h3 {
   margin-top: 16px;
   margin-right: 8px;
+}
+#markdown {
+  display: flex;
+  flex-direction: column;
+  margin: 36px;
+  align-items: flex-start;
 }

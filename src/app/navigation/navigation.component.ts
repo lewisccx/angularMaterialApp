@@ -41,11 +41,13 @@ export class NavigationComponent {
     },
   ]
   headings: Element[] | undefined;
+  
   constructor(
     private elementRef: ElementRef<HTMLElement>,
   ) { }
+
   onLoad(): void {
-    this.stripContent();
+    //this.stripContent();
     this.setHeadings();
   }
 
